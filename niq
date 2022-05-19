@@ -195,8 +195,110 @@ else
 end)
 
 else -- KRNL MODE
-    if syn then
-        while true do end
+    while true do end
+        xpcall(function()
+            function q() 
+            end
+            if getgenv().IsBeta ~= false then
+            getgenv().IsBeta = false
+            g = newcclosure(function()
+            end)
+            end
+            local a = 0
+            local b = 0
+                for i,v in pairs(getgc()) do
+                    if type(v) == "function" and KRNL_LOADED(v) then
+                        if not islclosure(v) then
+                            a = a+1
+                        else
+                            b = b+1
+                        end
+                    end
+                end
+            if a == 273-1 or a==275-1 then
+            local RE,ER = pcall(function()
+                debug.getconstants(syn.request)
+            end)
+            if RE == false then          
+        function WHITELIST(A,B,C,D,TYPE)
+            if A == false and B == true and C == true and D == false then
+                local Server2 = syn.request({
+                    Url = "http://localhost/whitelist/Server.php?Key=".._G.Key.."&Time="..Res,
+                    Method = "GET"
+                }).Body
+                if TYPE == "WL1" then
+                   if tostring(#Server) == tostring(4905) then
+                        if tostring(#Server2) == tostring(727) then
+                            RunScript(false,false,true,false,tostring(os.time()))
+                        elseif tostring(#Server2) == tostring(527) then
+                            bomb("You are in Blacklist!")
+                        elseif tostring(#Server2) == tostring(528) then
+                            bomb("Invaid HWID")
+                        elseif tostring(#Server2) == tostring(529) then
+                            -- UPDATE HWID
+                            RunScript(false,false,true,false,tostring(os.time()))
+                        elseif tostring(#Server2) == tostring(530) then
+                            bomb("Exploit not support!")
+                        elseif tostring(#Server2) == tostring(531) then
+                            bomb("Invaid Key!")
+                        else
+                            bomb("Invaid Key!!")
+                        end
+                   end
+                elseif TYPE == "WL2" then
+                    if tostring(#Server) == tostring(7637) then
+                        if tostring(#Server2) == tostring(825) then
+                            RunScript(false,false,true,false,tostring(os.time()))
+                        elseif tostring(#Server2) == tostring(527) then
+                            bomb("You are in Blacklist!")
+                        elseif tostring(#Server2) == tostring(528) then
+                            bomb("Invaid HWID")
+                        elseif tostring(#Server2) == tostring(529) then
+                            -- UPDATE HWID
+                            RunScript(false,false,true,false,tostring(os.time()))
+                        elseif tostring(#Server2) == tostring(530) then
+                            bomb("Exploit not support!")
+                        elseif tostring(#Server2) == tostring(531) then
+                            bomb("Invaid Key!")
+                        else
+                            bomb("Invaid Key!!")
+                        end
+                    end
+                elseif TYPE == "WL3" then
+                    if tostring(#Server) == tostring(8267) then
+                        if tostring(#Server2) == tostring(629) then
+                            RunScript(false,false,true,false,tostring(os.time()))
+                        elseif tostring(#Server2) == tostring(527) then
+                            bomb("You are in Blacklist!")
+                        elseif tostring(#Server2) == tostring(528) then
+                            bomb("Invaid HWID")
+                        elseif tostring(#Server2) == tostring(529) then
+                            -- UPDATE HWID
+                            RunScript(false,false,true,false,tostring(os.time()))
+                        elseif tostring(#Server2) == tostring(530) then
+                            bomb("Exploit not support!")
+                        elseif tostring(#Server2) == tostring(531) then
+                            bomb("Invaid Key!")
+                        else
+                            bomb("Invaid Key!!")
+                        end
+                    end
+                end
+            end
+        end
+        Server  = syn.request({
+            Url = "http://localhost/whitelist/Server.php?Time="..Res,
+            Method = "GET"
+        }).Body
+            if tostring(#Server) == tostring(4905) then
+            WHITELIST(false,true,true,false,"WL1")
+        elseif tostring(#Server) == tostring(7637) then 
+            WHITELIST(false,true,true,false,"WL2")
+        elseif tostring(#Server) == tostring(8267) then  
+            WHITELIST(false,true,true,false,"WL3")
+        else
+            bomb("ARE YOU MOTHER FUCKER SERIOUS ?")
+        end
     end
     local GCI = 0;
 local SF = 0;
